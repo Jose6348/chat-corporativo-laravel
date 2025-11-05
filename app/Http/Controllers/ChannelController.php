@@ -6,9 +6,11 @@ use App\Models\Channel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ChannelController extends Controller
 {
+    use AuthorizesRequests;
     public function index(): View
     {
         /** @var \App\Models\User $user */
