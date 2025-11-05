@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Channel;
+use App\Policies\ChannelPolicy;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,4 +23,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+
+    protected $policies = [
+        Channel::class => ChannelPolicy::class, 
+    ];
 }
