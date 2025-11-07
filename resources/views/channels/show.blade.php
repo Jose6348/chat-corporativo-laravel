@@ -1,49 +1,29 @@
 <x-app-layout>
     {{-- O header mostra o nome do canal que estamos vendo --}}
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $channel->name }} 
-            <span class="text-sm font-normal text-gray-500">(Nível {{ $channel->required_level }})</span>
-        </h2>
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="{{ route('dashboard') }}" class="text-gray-500 hover:text-gray-700 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                </a>
+                <div>
+                    <h2 class="font-bold text-2xl text-gray-800 leading-tight">
+                        {{ $channel->name }}
+                    </h2>
+                    <p class="text-sm text-gray-600 mt-1">
+                        Nível {{ $channel->required_level }} • {{ $channel->description ?? 'Canal de comunicação' }}
+                    </p>
+                </div>
+            </div>
+        </div>
     </x-slot>
 
-    <div class="py-12">
+    <div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 space-y-4">
-                    
-                    <div class="border rounded-lg p-4 h-96 overflow-y-auto space-y-4">
-                        
-                        @forelse ($messages as $message)
-                            {{-- Lógica de UI: Se o ID do usuário da mensagem for o meu, alinhe à direita --}}
-                            <div class="flex @if(Auth::id() == $message->user_id) justify-end @else justify-start @endif">
-                                
-                                <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
-                                    {{-- Nome do Autor --}}
-                                    <div class="font-semibold text-sm">{{ $message->user->name }}</div>
-                                    
-                                    {{-- Corpo da Mensagem --}}
-                                    <p class="text-gray-800">{{ $message->body }}</p>
-                                    
-                                    {{-- Horário (Ex: "há 5 minutos") --}}
-                                    <div class="text-xs text-gray-500 text-right mt-1">
-                                        {{ $message->created_at->diffForHumans() }}
-                                    </div>
-                                </div>
-                            </div>
-                        @empty
-                            <div class="text-center text-gray-500">
-                                <p>Este canal ainda não tem mensagens. Seja o primeiro a dizer olá!</p>
-                            </div>
-                        @endforelse
-                    </div>
-                    
-                    <div class->
-                        <p class="text-gray-500 text-sm">Em breve: formulário para enviar mensagem.</p>
-                        <p class="text-gray-400 text-xs">(Vamos implementar isso com Livewire no próximo passo)</p>
-                    </div>
-
-                </div>
+            <div class="card p-0 overflow-hidden">
+                <livewire:chat-room :channel="$channel" :key="$channel->id" wire:poll.2s />
             </div>
         </div>
     </div>
