@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply antialiased;
+    }
+}
+
+@layer components {
+    /* Botões profissionais */
+    .btn-primary {
+        @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-2.5 px-6 rounded-lg shadow-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 transform hover:scale-105 active:scale-95;
+    }
+    
+    .btn-secondary {
+        @apply bg-white text-gray-700 font-semibold py-2.5 px-6 rounded-lg border-2 border-gray-300 shadow-sm hover:bg-gray-50 hover:border-gray-400 transition-all duration-200;
+    }
+    
+    .btn-danger {
+        @apply bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:from-red-600 hover:to-red-700 transition-all duration-200;
+    }
+    
+    /* Cards profissionais */
+    .card {
+        @apply bg-white rounded-xl shadow-lg border border-gray-100 p-6 transition-all duration-200 hover:shadow-xl;
+    }
+    
+    /* Inputs profissionais */
+    .input-field {
+        @apply w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 outline-none;
+    }
+    
+    /* Gradiente de fundo profissional */
+    .bg-gradient-professional {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .bg-gradient-chat {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+}
