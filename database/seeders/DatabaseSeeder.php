@@ -13,14 +13,14 @@ class DatabaseSeeder extends Seeder
   
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-
-       
+        // Criar canais primeiro
         $this->call([
             ChannelSeeder::class,
+        ]);
+
+        // Criar usuários com diferentes níveis
+        $this->call([
+            UserSeeder::class,
         ]);
     }
 }

@@ -8,6 +8,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Mail\TwoFactorCodeMail;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -24,11 +27,22 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        if (! Auth::validate($request->only('email', 'password'))) {
+            return back()->withErrors([
+                'email' => __('auth.failed'),
+            ]);
+        }
 
-        $request->session()->regenerate();
+        $user = User::where('email', $request->email)->firstOrFail();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        $user->generateTwoFactorCode();
+
+        $request->session()->put('user_id_for_2fa', $user->id);
+
+        Mail::to($user->email)->send(new TwoFactorCodeMail($user->two_factor_code));
+
+        return redirect()->route('2fa.challenge')
+            ->with('status', 'Enviamos um código para o seu e-mail.');
     }
 
     /**

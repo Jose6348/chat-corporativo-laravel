@@ -29,7 +29,48 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'access_level' => 4, // Padrão: Colaborador
         ];
+    }
+
+    /**
+     * Indicate that the user should have admin level (1).
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'access_level' => 1,
+        ]);
+    }
+
+    /**
+     * Indicate that the user should have director level (2).
+     */
+    public function director(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'access_level' => 2,
+        ]);
+    }
+
+    /**
+     * Indicate that the user should have manager level (3).
+     */
+    public function manager(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'access_level' => 3,
+        ]);
+    }
+
+    /**
+     * Indicate that the user should have employee level (4).
+     */
+    public function employee(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'access_level' => 4,
+        ]);
     }
 
     /**
