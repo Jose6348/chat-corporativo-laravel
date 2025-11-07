@@ -29,7 +29,7 @@ class TwoFactorCodeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Seu Código de Acesso - Chat Milani',
+            subject: 'Seu Código de Acesso - Synkro Chat',
         );
     }
 

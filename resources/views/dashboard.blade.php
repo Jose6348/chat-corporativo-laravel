@@ -34,9 +34,7 @@
             <div class="card">
                 <div class="mb-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
-                        <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                        </svg>
+                        <img src="{{ asset('logo-synkro.png') }}" alt="Synkro" class="w-6 h-6 mr-2 object-contain">
                         Seus Canais Disponíveis
                     </h3>
                     <p class="text-gray-600">Escolha um canal abaixo para participar da conversa</p>
@@ -46,10 +44,8 @@
                     @forelse ($channels as $channel)
                         <a href="{{ route('channels.show', $channel) }}" class="group block p-6 bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <div class="flex items-start justify-between mb-4">
-                                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-3 rounded-lg shadow-md group-hover:shadow-lg transition-shadow">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
-                                    </svg>
+                                <div class="bg-white p-2 rounded-lg shadow-md group-hover:shadow-lg transition-shadow">
+                                    <img src="{{ asset('logo-synkro.png') }}" alt="Synkro" class="w-8 h-8 object-contain">
                                 </div>
                                 <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
                                     Nível {{ $channel->required_level }}
@@ -72,9 +68,7 @@
                         <div class="col-span-full">
                             <div class="text-center py-12">
                                 <div class="bg-gray-100 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
-                                    <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
-                                    </svg>
+                                    <img src="{{ asset('logo-synkro.png') }}" alt="Synkro" class="w-12 h-12 object-contain opacity-70">
                                 </div>
                                 <h3 class="text-lg font-semibold text-gray-800 mb-2">Nenhum canal disponível</h3>
                                 <p class="text-gray-600">Você ainda não tem acesso a nenhum canal no momento.</p>

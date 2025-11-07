@@ -3,10 +3,8 @@
         <!-- Header do Chat -->
         <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="bg-white/20 p-2 rounded-lg">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                    </svg>
+                <div class="bg-white p-2 rounded-lg shadow-sm">
+                    <img src="{{ asset('logo-synkro.png') }}" alt="Synkro" class="w-6 h-6 object-contain">
                 </div>
                 <div>
                     <h2 class="text-lg font-bold text-white">{{ $channel->name }}</h2>
@@ -83,9 +81,7 @@
             @empty
             <div class="flex flex-col items-center justify-center h-full text-center py-12">
                 <div class="bg-gray-100 rounded-full p-6 w-20 h-20 mb-4 flex items-center justify-center">
-                    <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                    </svg>
+                    <img src="{{ asset('logo-synkro.png') }}" alt="Synkro" class="w-12 h-12 object-contain opacity-70">
                 </div>
                 <h3 class="text-lg font-semibold text-gray-700 mb-2">Nenhuma mensagem ainda</h3>
                 <p class="text-gray-500">Seja o primeiro a enviar uma mensagem!</p>

@@ -1,6 +1,6 @@
-# Chat Milani
+# Synkro Chat
 
-Chat Milani é uma plataforma de comunicação interna construída com Laravel 12, Livewire e Pusher. O sistema oferece canais privados por nível de acesso, chat em tempo real e ferramentas administrativas para controlar todos os usuários da empresa.
+Synkro Chat é uma plataforma de comunicação interna construída com Laravel 12, Livewire e Pusher. O sistema oferece canais privados por nível de acesso, chat em tempo real e ferramentas administrativas para controlar todos os usuários da empresa.
 
 ## Sumário
 - [Recursos principais](#recursos-principais)

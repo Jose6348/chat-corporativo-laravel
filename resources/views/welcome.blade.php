@@ -5,7 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Chat') }} - Sistema de Chat Profissional</title>
+        <title>{{ config('app.name', 'Synkro Chat') }} - Plataforma de Comunicação Interna</title>
+
+        <link rel="icon" type="image/png" href="{{ asset('logo-synkro.png') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -27,13 +29,11 @@
                 <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
-                            <div class="bg-gradient-to-br from-blue-600 to-indigo-600 p-2 rounded-lg shadow-md">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                                </svg>
+                            <div class="bg-white p-2 rounded-lg shadow-md">
+                                <img src="{{ asset('logo-synkro.png') }}" alt="Logo Synkro" class="w-8 h-8 object-contain">
                             </div>
                             <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                                {{ config('app.name', 'Chat') }}
+                                {{ config('app.name', 'Synkro Chat') }}
                             </span>
                         </div>
                         
@@ -67,13 +67,13 @@
                         <div class="space-y-4">
                             <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
                                 <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                                    Chat Profissional
+                                    Comunicação Inteligente
                                 </span>
                                 <br>
-                                <span class="text-gray-800">para sua Empresa</span>
+                                <span class="text-gray-800">para equipes conectadas</span>
                             </h1>
                             <p class="text-xl text-gray-600 leading-relaxed">
-                                Sistema de comunicação em tempo real com canais organizados, mensagens instantâneas e interface moderna.
+                                Plataforma em tempo real com canais hierárquicos, mensagens instantâneas e painéis administrativos intuitivos.
                             </p>
                         </div>
 
@@ -127,7 +127,7 @@
                                 <div class="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center mb-3 mx-auto lg:mx-0">
                                     <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                                    </svg>
+                    </svg>
                                 </div>
                                 <h3 class="font-semibold text-gray-800 mb-1">Seguro</h3>
                                 <p class="text-sm text-gray-600">Autenticação e níveis de acesso</p>
@@ -143,10 +143,8 @@
                                 <!-- Chat Header -->
                                 <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
                                     <div class="flex items-center space-x-3">
-                                        <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                    </svg>
+                                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                                            <img src="{{ asset('logo-synkro.png') }}" alt="Logo Synkro" class="w-8 h-8 object-contain">
                                         </div>
                                         <div>
                                             <h3 class="text-white font-semibold">Canal Geral</h3>
