@@ -1,59 +1,84 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Chat Milani
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Chat Milani é uma plataforma de comunicação interna construída com Laravel 12, Livewire e Pusher. O sistema oferece canais privados por nível de acesso, chat em tempo real e ferramentas administrativas para controlar todos os usuários da empresa.
 
-## About Laravel
+## Sumário
+- [Recursos principais](#recursos-principais)
+- [Tecnologias](#tecnologias)
+- [Como rodar o projeto](#como-rodar-o-projeto)
+- [Gerenciamento de usuários](#gerenciamento-de-usu%C3%A1rios)
+- [Capturas de tela](#capturas-de-tela)
+- [Autor](#autor)
+- [Licença](#licen%C3%A7a)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Recursos principais
+- Autenticação completa com verificação de e-mail, two-factor e redefinição de senha.
+- Canais privados segmentados por nível hierárquico (Nível 1 ao Nível 4).
+- Chat em tempo real via Pusher + Laravel Echo, com recebimento imediato das mensagens.
+- Interface moderna com TailwindCSS e componentes Livewire.
+- Painel administrativo (Nível 1) para criar, editar e remover usuários dos níveis 2, 3 e 4.
+- Logs detalhados e comandos Artisan para gerenciar contas rapidamente.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologias
+- PHP 8.2+
+- Laravel 12
+- Livewire 3
+- TailwindCSS + Vite
+- Pusher Channels / Laravel Echo
+- SQLite (default) ou o banco de dados que preferir
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Como rodar o projeto
 
-## Learning Laravel
+### 1. Clonar e instalar dependências
+```bash
+git clone https://github.com/JorgeFalasco/chat-milani.git
+cd chat-milani
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+composer install
+npm install
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. Configurar variáveis de ambiente
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Laravel Sponsors
+Ajuste as variáveis do Pusher no `.env` (ou use Laravel Reverb se preferir).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 3. Executar migrações e seeders
+```bash
+php artisan migrate --seed
+```
 
-### Premium Partners
+Usuário administrador criado pelo seeder:
+- Email: `admin@chat.com`
+- Senha: `admin123`
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 4. Subir os servidores
+```bash
+php artisan serve
+npm run dev
+```
 
-## Contributing
+## Gerenciamento de usuários
+O painel do admin (Nível 1) fica em `/admin/users`. Ele permite criar usuários dos níveis 2, 3 e 4, editar dados/senha e excluir contas. Há também os comandos Artisan:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+php artisan user:create --name="João" --email="joao@chat.com" --password="senha123" --level=2
+php artisan user:password joao@chat.com --password="novaSenha"
+```
 
-## Code of Conduct
+## Capturas de tela
+| Dashboard | Chat ao vivo |
+|-----------|--------------|
+| ![](docs/img/dashboard.png) | ![](docs/img/chat.png) |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Autor
+Projeto desenvolvido por **José Jorge Falasco Junior**.
 
-## Security Vulnerabilities
+- LinkedIn: https://www.linkedin.com/in/josejorgefalasco/
+- GitHub: https://github.com/JorgeFalasco
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Licença
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
