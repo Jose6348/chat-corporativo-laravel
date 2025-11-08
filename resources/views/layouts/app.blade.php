@@ -57,6 +57,8 @@
         </footer>
     </div>
 
+    <x-chatbot-helper />
+
     <!-- Scripts do Livewire -->
     @livewireScripts
     @stack('scripts')
