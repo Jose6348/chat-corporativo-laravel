@@ -23,68 +23,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeMessages = [
         {
             role: 'assistant',
-            text: 'Olá! Eu sou o assistente Synkro. Posso te guiar por cada recurso importante da plataforma.'
+            text: 'Olá! Eu sou o assistente Synkro. Trago resumos rápidos para você dominar o workspace.'
         },
         {
             role: 'assistant',
-            text: 'Selecione um dos tópicos rápidos abaixo ou me deixe aberto enquanto navega. Estou sempre por perto!'
+            text: 'Escolha um tópico abaixo ou deixe-me aberto para tirar dúvidas enquanto navega.'
         }
     ];
 
     const conversations = {
         tour: [
-            { role: 'assistant', text: 'Bem-vindo ao Synkro Chat! Vamos fazer um passeio rápido pela interface.' },
+            { role: 'assistant', text: 'Vamos fazer um tour rápido. Em poucos passos você entende o fluxo do Synkro.' },
             {
                 role: 'assistant',
-                text: '• Dashboard: acompanhe o clima do time, canais em destaque e indicadores principais.\n• Barra lateral: acesse seus canais, conversas diretas e contatos favoritos.\n• Área central: participe dos canais e visualize threads e anexos sem sair da página.\n• Painel auxiliar: encontre insights, notificações e atalhos para ações frequentes.'
-            },
-            {
-                role: 'assistant',
-                text: 'Dica: fixe canais importantes com o ícone de estrela e personalize suas notificações para não perder nada.'
+                text: '• Dashboard: visão geral do time.\n• Barra lateral: canais, mensagens diretas e favoritos.\n• Área central: conversas e arquivos sem trocar de tela.'
             }
         ],
         abas: [
-            { role: 'assistant', text: 'Aqui está uma visão clara de cada aba principal da aplicação:' },
+            { role: 'assistant', text: 'As abas principais foram pensadas para agilizar seu dia a dia.' },
             {
                 role: 'assistant',
-                text: '• Dashboard: resumo executivo do trabalho em andamento e atalhos para as iniciativas recentes.\n• Canais: organize conversas por equipes, projetos ou temas. Você pode filtrar por favoritados e silenciados.\n• Chat em tempo real: converse dentro do canal selecionado e acompanhe quem está online, digitando ou reagindo.\n• Administração: disponível para líderes e admins, onde é possível gerenciar usuários, permissões e canais.\n• Perfil: centralize configurações pessoais, foto, preferências de notificação e autenticação em dois fatores.'
-            },
-            {
-                role: 'assistant',
-                text: 'Use o menu responsivo no canto superior direito para acessar opções extras quando estiver em telas menores.'
+                text: '• Dashboard: atalhos e métricas.\n• Canais: organiza equipes e projetos.\n• Administração: ajustes de pessoas e permissões.\n• Perfil: preferências pessoais e segurança.'
             }
         ],
         niveis: [
-            { role: 'assistant', text: 'Os níveis de acesso ajudam a manter a organização e a segurança do workspace:' },
+            { role: 'assistant', text: 'Três níveis mantêm o workspace alinhado e seguro.' },
             {
                 role: 'assistant',
-                text: '• Colaborador: participa de canais abertos, reage às mensagens e cria conversas privadas.\n• Líder: além das permissões anteriores, pode criar canais, convidar membros e fixar comunicados.\n• Administrador: gerencia todo o ambiente, define políticas de segurança, integrações e níveis dos demais usuários.'
-            },
-            {
-                role: 'assistant',
-                text: 'Precisa mudar o nível de alguém? Solicite no canal #suporte-ti ou use o painel Administração se você já for admin.'
+                text: '• Colaborador: participa e compartilha.\n• Líder: cria canais e gerencia equipes.\n• Administrador: define regras, integrações e níveis.'
             }
         ],
         chat: [
-            { role: 'assistant', text: 'O chat é o coração do Synkro. Olha só o que ele oferece:' },
+            { role: 'assistant', text: 'O chat reúne tudo que você precisa para decisões rápidas.' },
             {
                 role: 'assistant',
-                text: '• Threads organizadas: segure em uma mensagem (ou clique no menu de três pontos) para iniciar discussões paralelas.\n• Reações rápidas: use emojis para sinalizar status sem interromper o fluxo.\n• Anexos inteligentes: arraste arquivos, compartilhe links e marque pessoas com “@”.\n• Indicadores em tempo real: veja quem está online, digitando ou leu a mensagem.'
-            },
-            {
-                role: 'assistant',
-                text: 'Combine isso com os recursos de busca global para encontrar qualquer conversa ou arquivo em segundos.'
+                text: '• Threads para conversas paralelas.\n• Reações e menções para sinalizar status.\n• Anexos rápidos e presença em tempo real.'
             }
         ],
         boaspraticas: [
-            { role: 'assistant', text: 'Algumas boas práticas para manter a comunicação impecável:' },
+            { role: 'assistant', text: 'Algumas atitudes garantem comunicação fluida.' },
             {
                 role: 'assistant',
-                text: '• Nomeie canais com clareza e use descrições que expliquem o propósito.\n• Centralize decisões importantes em um único thread e fixe a mensagem de resumo.\n• Use menções com responsabilidade e marque apenas quem precisa ser notificado.\n• Ajuste seu status quando estiver ausente para alinhar expectativas.'
-            },
-            {
-                role: 'assistant',
-                text: 'E lembre-se: mensagens empáticas e transparentes fortalecem a cultura do time.'
+                text: '• Canais com nomes claros e descrições curtas.\n• Resumos fixados após decisões.\n• Menções apenas para quem precisa ser notificado.'
             }
         ]
     };
@@ -164,8 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     const calculateDelay = (text) => {
-        const base = 450;
-        const variable = Math.min(1200, Math.max(350, text.length * 18));
+        const base = 320;
+        const variable = Math.min(900, Math.max(260, text.length * 14));
         return base + variable;
     };
 

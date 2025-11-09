@@ -42,11 +42,12 @@
     }
 
     .chatbot-window {
-        @apply backdrop-blur-sm transition-all duration-300 translate-y-4 opacity-0 pointer-events-none;
+        @apply backdrop-blur-sm transition-all duration-300 translate-y-4 opacity-0 scale-95 pointer-events-none;
+        transform-origin: 90% 100%;
     }
 
     .chatbot-window.is-visible {
-        @apply translate-y-0 opacity-100 pointer-events-auto;
+        @apply translate-y-0 opacity-100 scale-100 pointer-events-auto;
     }
 
     .chatbot-header {
@@ -132,6 +133,10 @@
     .chatbot-toggle-btn {
         @apply relative flex items-center gap-3 bg-white/95 backdrop-blur border border-indigo-100 px-5 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
         box-shadow: 0 25px 45px -20px rgba(79, 70, 229, 0.35);
+    }
+
+    .chatbot-toggle-icon {
+        @apply flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-600 via-indigo-500 to-sky-500 text-white shadow-inner;
     }
 
     .chatbot-toggle-glow {

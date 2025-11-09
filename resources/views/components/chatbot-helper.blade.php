@@ -1,6 +1,6 @@
 <div id="synkro-guide" class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 text-slate-800">
     <div id="synkro-guide-window"
-        class="chatbot-window hidden w-80 md:w-[420px] bg-white rounded-3xl shadow-3xl border border-indigo-100 overflow-hidden">
+        class="chatbot-window hidden w-[22rem] md:w-[460px] bg-white rounded-3xl shadow-3xl border border-indigo-100 overflow-hidden">
         <header class="chatbot-header px-5 py-4 flex items-start justify-between gap-3">
             <div class="space-y-1">
                 <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/15 backdrop-blur-sm">
@@ -9,9 +9,9 @@
                     <span class="text-[11px] uppercase tracking-[0.35em] font-semibold text-white/80">Assistente
                         Synkro</span>
                 </div>
-                <p class="text-xl font-bold leading-tight text-white drop-shadow-sm">Guia inteligente da plataforma</p>
-                <p class="text-xs text-white/80 max-w-[260px] leading-snug">Sempre disponível para explicar recursos,
-                    níveis e melhores práticas enquanto você navega.</p>
+                <p class="text-xl font-bold leading-tight text-white drop-shadow-sm">Guia rápido da plataforma</p>
+                <p class="text-xs text-white/80 max-w-[260px] leading-snug">Descubra em segundos como aproveitar o Synkro
+                    em cada aba.</p>
             </div>
             <button id="synkro-guide-close" type="button"
                 class="chatbot-icon-btn text-white/80 hover:text-white transition-colors duration-150 focus-visible:ring-offset-indigo-500">
@@ -36,12 +36,12 @@
         </div>
 
         <div data-chatbot-messages
-            class="chatbot-messages px-5 py-5 space-y-4 max-h-80 overflow-y-auto bg-gradient-to-b from-white via-indigo-50/30 to-white">
+            class="chatbot-messages px-6 py-6 space-y-4 max-h-80 overflow-y-auto bg-gradient-to-b from-white via-indigo-50/30 to-white">
             <div class="chatbot-row">
                 <div class="chatbot-avatar">S</div>
                 <div class="chatbot-bubble">
-                    <p>Olá! Eu sou o assistente Synkro. Clique em um dos tópicos abaixo para conhecer melhor a plataforma
-                        ou me mantenha aberto enquanto navega. Estou sempre no canto direito caso precise de mim. 🙂</p>
+                    <p>Oi! Eu sou o assistente Synkro. Escolha um tópico para conhecer os destaques do sistema ou deixe-me
+                        aberto enquanto navega.</p>
                 </div>
             </div>
         </div>
@@ -78,9 +78,13 @@
     </div>
 
     <button id="synkro-guide-toggle" type="button" class="chatbot-toggle-btn">
-        <span
-            class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-600 via-indigo-500 to-sky-500 text-white font-semibold shadow-inner">
-            ?
+        <span class="chatbot-toggle-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-6 h-6"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 10c0-.943.421-1.818 1.172-2.516C8.924 6.786 9.939 6.4 11 6.4c1.06 0 2.076.386 2.828 1.084.75.698 1.172 1.573 1.172 2.516 0 .943-.422 1.818-1.172 2.516-.753.7-1.768 1.084-2.828 1.084v1.2"></path>
+                <path d="M11 17h.01"></path>
+                <path d="M5 19.6V5.8A1.8 1.8 0 0 1 6.8 4H17.2A1.8 1.8 0 0 1 19 5.8V14l-3 3H6.8A1.8 1.8 0 0 1 5 15.2z"></path>
+            </svg>
         </span>
         <span class="text-left leading-tight">
             <span class="block text-sm font-semibold text-slate-800">Assistente Synkro</span>
@@ -89,4 +93,5 @@
         <span class="chatbot-toggle-glow"></span>
     </button>
 </div>
+
 
