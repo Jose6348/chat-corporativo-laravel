@@ -1,3 +1,7 @@
+/* ========================= */
+/* SEU CSS ORIGINAL (intacto) */
+/* ========================= */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -199,4 +203,114 @@
     .animate-chatbot-in {
         animation: chatbot-slide-in 0.35s ease forwards;
     }
+}
+
+/* ================================== */
+/* MINHAS ADIÇÕES (apenas acrescentar) */
+/* ================================== */
+
+@layer base {
+  /* tipografia/base mais neutra (sem remover seu antialiasing) */
+  body {
+    @apply text-slate-900;
+  }
+}
+
+@layer components {
+  /* container consistente com gutters */
+  .container-pad { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+
+  /* botão fantasma para links "Entrar" no header */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2
+           text-slate-700 hover:text-slate-900 hover:bg-slate-100/70 transition;
+  }
+
+  /* destaque sutil de texto em gradiente */
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent;
+  }
+
+  /* badge/chip para micro-infos */
+  .badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white
+           px-3 py-1 text-xs font-medium text-slate-700;
+  }
+
+  /* variações de card para “glass” e “ring” sem mexer no seu .card */
+  .card-glass {
+    @apply rounded-2xl bg-white/70 backdrop-blur ring-1 ring-slate-200 shadow-sm;
+  }
+  .card-ring {
+    @apply rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm;
+  }
+
+  /* input mais “soft” (opcional) sem alterar sua .input-field */
+  .input-field-soft {
+    @apply w-full rounded-xl border border-slate-300 bg-white/80 backdrop-blur
+           px-3 py-2 text-slate-900 placeholder-slate-400
+           focus:outline-none focus:ring-2 focus:ring-indigo-500;
+  }
+
+  /* navbar glassy */
+  .nav-glass {
+    @apply sticky top-0 z-40 border-b border-slate-200/60 bg-white/70 backdrop-blur-md;
+  }
+
+  /* grid sutil de fundo para seções grandes */
+  .bg-grid-slate {
+    background-image:
+      linear-gradient(to right, rgba(100,116,139,0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(100,116,139,0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* halos decorativos (use em wrappers com ::before/::after) */
+  .halo {
+    position: relative;
+  }
+  .halo::after {
+    content: "";
+    position: absolute; inset: -1rem;
+    border-radius: 1.5rem;
+    background: radial-gradient(60% 60% at 70% 0%, rgba(99,102,241,0.18), transparent 60%),
+                radial-gradient(60% 60% at 0% 90%, rgba(14,165,233,0.14), transparent 60%);
+    filter: blur(16px);
+    z-index: -1;
+  }
+
+  /* “browser frame” para o mock do chat */
+  .browser-frame {
+    @apply rounded-t-2xl bg-slate-900 text-white px-4 py-3 flex items-center gap-2;
+  }
+  .browser-dot {
+    @apply inline-block h-3 w-3 rounded-full;
+  }
+  .browser-dot--red { @apply bg-red-500; }
+  .browser-dot--yellow { @apply bg-yellow-400; }
+  .browser-dot--green { @apply bg-emerald-500; }
+
+  /* seções de hero com respiro */
+  .section-hero { @apply py-16 md:py-24 lg:py-28; }
+
+  /* helpers de layout */
+  .stack-6  { @apply flex flex-col gap-6; }
+  .stack-8  { @apply flex flex-col gap-8; }
+  .row-3    { @apply flex items-center gap-3; }
+  .row-4    { @apply flex items-center gap-4; }
+
+  /* footer limpo */
+  .footer-soft { @apply bg-white/80 border-t border-slate-200 py-8; }
+}
+
+/* Opcional: dark-mode se usar `darkMode: 'class'` no tailwind.config.js */
+@layer base {
+  .dark body { @apply bg-slate-900 text-slate-100; }
+}
+@layer components {
+  .dark .card-glass { @apply bg-white/10 ring-white/10; }
+  .dark .card-ring  { @apply bg-slate-900 ring-white/10; }
+  .dark .btn-ghost  { @apply text-slate-200 hover:text-white hover:bg-white/10; }
+  .dark .badge      { @apply border-white/15 bg-white/5 text-slate-200; }
+  .dark .footer-soft { @apply bg-slate-900/80 border-white/10; }
 }

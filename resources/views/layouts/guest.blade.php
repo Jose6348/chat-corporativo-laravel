@@ -22,32 +22,29 @@
             }
         </style>
     </head>
-    <body class="font-sans text-gray-900 antialiased bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 px-4">
-            <!-- Logo e Título -->
-            <div class="text-center mb-8">
-                <a href="/" class="inline-block">
-                    <div class="bg-white p-4 rounded-2xl shadow-xl mb-4 transform hover:scale-105 transition-transform">
-                        <img src="{{ asset('logo-synkro.png') }}" alt="Logo Synkro" class="w-16 h-16 object-contain">
+    <body class="font-sans text-slate-900 antialiased bg-white">
+        <div class="min-h-screen w-full flex flex-col lg:flex-row">
+            <div class="order-2 lg:order-1 flex-1 flex items-center justify-center px-6 sm:px-12 py-12">
+                <div class="w-full max-w-lg">
+                    <div class="mb-12">
+                        <a href="/" class="inline-flex items-center gap-4">
+                            <span class="inline-flex h-16 w-16 items-center justify-center">
+                                <img src="{{ asset('logo-synkro.png') }}" alt="Logo {{ config('app.name', 'Synkro Chat') }}" class="h-full w-full object-contain">
+                            </span>
+                            <div class="flex flex-col">
+                                <span class="text-3xl font-bold tracking-tight">{{ config('app.name', 'Synkro Chat') }}</span>
+                                <span class="text-sm text-slate-500">Conecte-se ao seu hub de conversas</span>
+                            </div>
+                        </a>
                     </div>
-                </a>
-                <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                    {{ config('app.name', 'Synkro Chat') }}
-                </h1>
-                <p class="text-gray-600 mt-2">Conexão segura para sua equipe</p>
-            </div>
-
-            <!-- Card de Login -->
-            <div class="w-full sm:max-w-md">
-                <div class="bg-white/80 backdrop-blur-lg shadow-2xl rounded-2xl overflow-hidden border border-white/20">
-                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
-                        <h2 class="text-xl font-semibold text-white">Bem-vindo de volta</h2>
-                        <p class="text-blue-100 text-sm">Entre para continuar</p>
-                    </div>
-                    <div class="px-6 py-8">
+                    <div class="space-y-10">
                         {{ $slot }}
                     </div>
                 </div>
+            </div>
+            <div class="order-1 lg:order-2 relative hidden lg:flex lg:w-1/2 overflow-hidden">
+                <img src="{{ asset('image 1.png') }}" alt="Workspace" class="absolute inset-0 h-full w-full object-cover">
+                <div class="absolute inset-0 bg-white/15 backdrop-blur-[1px]"></div>
             </div>
         </div>
     </body>
