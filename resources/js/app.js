@@ -1,10 +1,10 @@
 import './bootstrap';
 
-// import Alpine from 'alpinejs';
-//
-// window.Alpine = Alpine;
-//
-// Alpine.start();
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
 
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('synkro-guide-toggle');

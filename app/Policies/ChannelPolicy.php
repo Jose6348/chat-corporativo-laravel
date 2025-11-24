@@ -21,7 +21,7 @@ class ChannelPolicy
      */
     public function view(User $user, Channel $channel): bool
     {
-        return $user->access_level <= $channel->required_level;
+        return $channel->allowsLevel($user->access_level);
     }
 
     /**
@@ -45,7 +45,7 @@ class ChannelPolicy
      */
     public function delete(User $user, Channel $channel): bool
     {
-        return false;
+        return $user->access_level === 1;
     }
 
     /**
