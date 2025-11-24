@@ -39,7 +39,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->put('user_id_for_2fa', $user->id);
 
-        Mail::to($user->email)->send(new TwoFactorCodeMail($user->two_factor_code));
+        // Envia o código para o email do usuário
+        Mail::to($user->email)->send(new TwoFactorCodeMail($user->two_factor_code, $user->email));
 
         return redirect()->route('2fa.challenge')
             ->with('status', 'Enviamos um código para o seu e-mail.');
