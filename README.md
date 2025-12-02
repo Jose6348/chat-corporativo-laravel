@@ -29,37 +29,81 @@ Synkro Chat é uma plataforma de comunicação interna construída com Laravel 1
 
 ## Como rodar o projeto
 
-### 1. Clonar e instalar dependências
-```bash
-git clone https://github.com/JorgeFalasco/chat-milani.git
-cd chat-milani
+### ⚡ Início Rápido
 
+```bash
+# 1. Instalar dependências
 composer install
 npm install
-```
 
-### 2. Configurar variáveis de ambiente
-```bash
+# 2. Configurar ambiente
 cp .env.example .env
 php artisan key:generate
-```
 
-Ajuste as variáveis do Pusher no `.env` (ou use Laravel Reverb se preferir).
+# 3. Configurar .env (SQL Server, SMTP, Pusher)
+# Edite o arquivo .env com suas credenciais
 
-### 3. Executar migrações e seeders
-```bash
+# 4. Executar migrações
 php artisan migrate --seed
+
+# 5. Iniciar servidores (em terminais separados)
+php artisan serve    # Terminal 1
+npm run dev          # Terminal 2
 ```
 
-Usuário administrador criado pelo seeder:
-- Email: `admin@chat.com`
-- Senha: `admin123`
+### 📋 Pré-requisitos
 
-### 4. Subir os servidores
-```bash
-php artisan serve
-npm run dev
+- PHP 8.2+ com extensões `pdo_sqlsrv` e `sqlsrv`
+- Composer
+- Node.js 20+
+- SQL Server (local ou remoto)
+- Servidor SMTP (Gmail, Outlook, etc.)
+
+### ⚙️ Configuração Necessária
+
+**Banco de Dados (SQL Server):**
+```env
+DB_CONNECTION=sqlsrv
+DB_SERVER=seu-servidor
+DB_HOST=seu-servidor
+DB_PORT=1433
+DB_DATABASE=chat_milani
+DB_USERNAME=          # Vazio para Windows Auth
+DB_PASSWORD=          # Vazio para Windows Auth
+DB_TRUST_SERVER_CERTIFICATE=true
 ```
+
+**Email (SMTP):**
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=seu-email@gmail.com
+MAIL_PASSWORD=sua-senha-de-app
+MAIL_ENCRYPTION=tls
+```
+
+**Pusher (Broadcasting):**
+```env
+BROADCAST_DRIVER=pusher
+PUSHER_APP_ID=seu-app-id
+PUSHER_APP_KEY=seu-app-key
+PUSHER_APP_SECRET=seu-app-secret
+PUSHER_APP_CLUSTER=us2
+```
+
+### 👤 Usuários de Teste
+
+Após executar `php artisan migrate --seed`:
+
+- **Admin:** `admin@chat.com` / `admin123`
+- **Diretor:** `diretor@chat.com` / `diretor123`
+- **Gerente:** `gerente@chat.com` / `gerente123`
+- **Colaborador:** `colaborador1@chat.com` / `colab123`
+
+### 📖 Guia Completo
+
+Para instruções detalhadas, consulte: [docs/COMO_RODAR.md](docs/COMO_RODAR.md)
 
 ## Gerenciamento de usuários
 O painel do admin (Nível 1) fica em `/admin/users`. Ele permite criar usuários dos níveis 2, 3 e 4, editar dados/senha e excluir contas. Há também os comandos Artisan:

@@ -16,6 +16,7 @@ class ChatRoom extends Component
     public Channel $channel;
     public array $messages = [];
     public string $newMessage = '';
+    public bool $sending = false;
 
     // --- 2. ADICIONE A FORMA EXPLÍCITA DE OUVIR ---
     /**
@@ -52,27 +53,57 @@ class ChatRoom extends Component
 
     public function sendMessage(): void
     {
-        $body = trim($this->newMessage);
-        if ($body === '') return;
+        // Previne múltiplos submits
+        if ($this->sending) {
+            return;
+        }
 
-        $msg = Message::create([
-            'user_id'    => Auth::id(),
-            'channel_id' => $this->channel->id,
-            'body'       => $body,
-        ])->load('user');
+        try {
+            $this->sending = true;
+            
+            $body = trim($this->newMessage);
+            if ($body === '') {
+                $this->reset('newMessage');
+                $this->sending = false;
+                return;
+            }
 
-        // adiciona localmente
-        $this->messages[] = [
-            'id'         => $msg->id,
-            'body'       => $msg->body,
-            'user'       => ['id' => $msg->user->id, 'name' => $msg->user->name],
-            'created_at' => optional($msg->created_at)->toIsoString(),
-        ];
+            $msg = Message::create([
+                'user_id'    => Auth::id(),
+                'channel_id' => $this->channel->id,
+                'body'       => $body,
+            ])->load('user');
 
-        // envia para os outros clientes
-        broadcast(new MessageSent($msg))->toOthers();
+            // adiciona localmente
+            $this->messages[] = [
+                'id'         => $msg->id,
+                'body'       => $msg->body,
+                'user'       => ['id' => $msg->user->id ?? null, 'name' => $msg->user->name ?? 'Desconhecido'],
+                'created_at' => optional($msg->created_at)->toIsoString(),
+            ];
 
-        $this->reset('newMessage');
+            // envia para os outros clientes
+            broadcast(new MessageSent($msg))->toOthers();
+
+            $this->reset('newMessage');
+            $this->sending = false;
+            
+            Log::info('✅ Mensagem enviada com sucesso', [
+                'message_id' => $msg->id,
+                'channel_id' => $this->channel->id,
+                'user_id' => Auth::id()
+            ]);
+        } catch (\Exception $e) {
+            $this->sending = false;
+            
+            Log::error('❌ Erro ao enviar mensagem', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            
+            // Não relança a exceção para evitar reload
+            $this->dispatch('error', message: 'Erro ao enviar mensagem. Tente novamente.');
+        }
     }
 
     // 3. REMOVA O ATRIBUTO #[On(...)] DESTA LINHA

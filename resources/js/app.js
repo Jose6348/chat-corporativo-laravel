@@ -2,9 +2,13 @@ import './bootstrap';
 
 import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
-
-Alpine.start();
+// Previne múltiplas instâncias do Alpine
+if (!window.Alpine) {
+    window.Alpine = Alpine;
+    Alpine.start();
+} else {
+    console.warn('⚠️ Alpine já foi inicializado, ignorando nova inicialização');
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('synkro-guide-toggle');
