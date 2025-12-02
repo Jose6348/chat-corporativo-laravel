@@ -4,7 +4,7 @@ use Illuminate\Support\Str;
 
 return [
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'sqlsrv'),
 
     'connections' => [
 
@@ -79,21 +79,20 @@ return [
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DB_URL'),
-            'host' => env('DB_HOST', 'localhost'),
+            'host' => env('DB_HOST', env('DB_SERVER', 'localhost')),
             'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', env('DB_NAME', 'laravel')),
+            'username' => env('DB_USERNAME') ?: null,
+            'password' => env('DB_PASSWORD') ?: null,
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
-            // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
-            
-            // --- NOTA: Eu mantive a correção do 'options' que fizemos lá atrás ---
-            'options' => [
-                'TrustServerCertificate' => env('DB_TRUST_SERVER_CERTIFICATE', false),
-            ],
+            'encrypt' => env('DB_ENCRYPT', 'no'),
+            'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', true),
+            'options' => array_filter([
+                'TrustServerCertificate' => env('DB_TRUST_SERVER_CERTIFICATE', true),
+                PDO::ATTR_STRINGIFY_FETCHES => false,
+            ]),
         ],
         // --- FIM DO BLOCO REVERTIDO ---
 
